@@ -8,16 +8,18 @@
 // eslint-disable-next-line import/unambiguous
 $(document).ready(function() {
   // Header shrinking function
-  $(window).scroll(function() {
-    if (
-      $(window).scrollTop() >= $('.bootstrap-header').outerHeight() / 2 &&
-      !$('.bootstrap-header').hasClass('mini')
-    ) {
-      $('.bootstrap-header').addClass('mini');
-      $('.bootstrap-body').addClass('mini');
-      $(window).scrollTop(0);
-    }
-  });
+  const bootstrapHeader = $('.bootstrap-header');
+  const bootstrapBody = $('.bootstrap-body');
+  const bootstrapHeaderHeight = bootstrapHeader.outerHeight();
+
+  function expandCollapseHeader() {
+    const scrolledPastHalfHeader = $(window).scrollTop() >= bootstrapHeaderHeight / 2;
+    bootstrapHeader.toggleClass('mini', scrolledPastHalfHeader);
+    bootstrapBody.toggleClass('mini', scrolledPastHalfHeader);
+  }
+
+  $(window).scroll(expandCollapseHeader);
+  expandCollapseHeader();
 
   // Instance Tracking slider
   const toggleCheckbox = $('#form-group-enable_tracking input:checkbox');
