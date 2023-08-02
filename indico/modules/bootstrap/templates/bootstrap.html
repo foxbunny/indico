@@ -10,7 +10,7 @@
 
 {% block body %}
     <div class="bootstrap-header">
-        <img class="header-logo" src="{{ url_for('assets.image', filename='logo_indico_white.png') }}">
+        <h1 class="header-logo">Indico</h1>
         <div class="header-title">{% trans %}Hello there!{% endtrans %}</div>
         <div class="header-subtitle">{% trans %}Indico needs just a little bit more data from you...{% endtrans %}</div>
         {% if languages and session.lang in languages %}

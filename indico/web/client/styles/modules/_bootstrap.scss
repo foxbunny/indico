@@ -30,9 +30,16 @@
   background-position: 20px 20px;
 
   .header-logo {
+    @extend %hide-text;
     height: 50%;
 
-    color: white;
+    display: inline-block;
+    aspect-ratio: 2.27;
+
+    background-image: url('/images/logo_indico_bw.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
   }
 
   .header-title {
@@ -64,7 +71,7 @@
 
       height: 75%;
       margin-left: 50px;
-      padding-right: 30px;
+      margin-right: 30px;
     }
   }
 

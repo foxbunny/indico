@@ -77,3 +77,8 @@
 .ellipsis {
   @include ellipsis();
 }
+
+%hide-text {
+  color: transparent;
+  user-select: none;
+}
