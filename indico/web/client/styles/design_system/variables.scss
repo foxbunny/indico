@@ -57,6 +57,7 @@ body {
   --control-border-radius: 0.15em;
   --control-padding: 0.5em;
   --control-internal-gap: 0.2em;
+  --control-raised-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
 
   // Clickable texts (e.g., link)
   --clickable-text-color: var(--accent-color);
