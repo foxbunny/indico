@@ -264,6 +264,7 @@ Accessibility
 - Make dropdown menu fully accessible (:issue:`5896`, :pr:`5897`, thanks :user:`foxbunny`)
 - Improve registration form color contrast and font sizes (:pr:`6098`, thanks :user:`foxbunny`)
 - Improve single choice input accessibility (:pr:`6310`, thanks :user:`foxbunny`)
+- Improve country input accessibility (thanks :user:`foxbunny`)
 
 Internal Changes
 ^^^^^^^^^^^^^^^^

@@ -204,6 +204,7 @@ customElements.define(
       function moveVirtualCursorToOption(option) {
         // Omit the $option to remove selection
         input.setAttribute('aria-activedescendant', option?.id || '');
+        option?.scrollIntoView({block: 'nearest'});
       }
 
       function selectInputText(startIndex = input.value.length) {

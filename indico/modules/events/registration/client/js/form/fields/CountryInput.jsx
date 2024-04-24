@@ -6,10 +6,10 @@
 // LICENSE file for more details.
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
-import {Dropdown} from 'semantic-ui-react';
 
+import Combobox from 'indico/react/components/Combobox';
 import {FinalCheckbox, FinalField} from 'indico/react/forms';
 import {Translate} from 'indico/react/i18n';
 
@@ -20,25 +20,29 @@ import {getStaticData} from '../selectors';
 const isoToFlag = country =>
   String.fromCodePoint(...country.split('').map(c => c.charCodeAt() + 0x1f1a5));
 
-function CountryInputComponent({value, onChange, disabled, choices, clearable}) {
+function CountryInputComponent({value, onChange, disabled, choices}) {
+  const [options, countryNameToKey, countryKeyToName] = useMemo(() => {
+    const _options = [];
+    const _countryNameToKey = new Map();
+    const _countryKeyToName = new Map();
+    choices.forEach(country => {
+      _options.push([country.caption, `${isoToFlag(country.countryKey)} ${country.caption}`]);
+      _countryNameToKey.set(country.caption, country.countryKey);
+      _countryKeyToName.set(country.countryKey, country.caption);
+    });
+    return [_options, _countryNameToKey, _countryKeyToName];
+  }, [choices]);
+
+  const handleChange = ev => {
+    onChange(countryNameToKey.get(ev.target.value) || ev.target.value);
+  };
+
   return (
-    <Dropdown
-      styleName="country-dropdown"
-      placeholder={Translate.string('Select a country')}
-      fluid
-      search
-      selection
-      selectOnBlur={false}
-      selectOnNavigation={false}
+    <Combobox
+      options={options}
+      value={countryKeyToName.get(value) || value}
+      onChange={handleChange}
       disabled={disabled}
-      clearable={clearable}
-      value={value}
-      onChange={(_, {value: newValue = ''}) => onChange(newValue)}
-      options={choices.map(country => ({
-        key: country.countryKey,
-        value: country.countryKey,
-        text: `${isoToFlag(country.countryKey)} ${country.caption}`,
-      }))}
     />
   );
 }
@@ -48,7 +52,7 @@ CountryInputComponent.propTypes = {
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
   choices: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-  clearable: PropTypes.bool.isRequired,
+  // clearable: PropTypes.bool.isRequired,
 };
 
 export default function CountryInput({htmlId, htmlName, disabled, isRequired, choices}) {
