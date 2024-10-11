@@ -69,6 +69,8 @@ Accessibility
 
 - Improve country input accessibility (:pr:`6551`, thanks :user:`foxbunny`)
 - Reimplement Checkbox to make it programmatically focusable (:pr:`6528`, thanks :user:`foxbunny`)
+- Improve keyboard focus for session bar popups (:pr:`6590`, thanks :user:`foxbunny`)
+- Improve screen reader support for protection details button (:pr:`6590`, thanks :user:`foxbunny`)
 
 Internal Changes
 ^^^^^^^^^^^^^^^^
