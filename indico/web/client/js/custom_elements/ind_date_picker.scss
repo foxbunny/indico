@@ -198,6 +198,7 @@ ind-calendar {
 
   .month-year :is(select, input[type='number']) {
     flex: 1;
+    background: var(--background-primary);
 
     @include sui_debt.field-override() {
       width: 2em;
@@ -236,7 +237,7 @@ ind-calendar {
 }
 
 ind-date-grid {
-  // min-width: 20em;
+  min-width: 20em;
 
   .month-label {
     font-weight: bold;
