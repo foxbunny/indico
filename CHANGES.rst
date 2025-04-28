@@ -39,7 +39,7 @@ Bugfixes
 Accessibility
 ^^^^^^^^^^^^^
 
-- Nothing so far
+- Improve accessibility of the category page search box (:pr:`6869`, thanks :user:`foxbunny`)
 
 Internal Changes
 ^^^^^^^^^^^^^^^^
